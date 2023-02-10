@@ -1,16 +1,26 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import Videos from "./pages/Videos";
+import Root from "./pages/Root";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
-    errorElement: <p>Not Found Page</p>,
-  },
-  {
-    path: "/kyc",
-    element: <div>KimYeonChul!</div>,
+    element: <Root />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/videos",
+        element: <Videos />,
+      },
+    ],
   },
 ]);
 
